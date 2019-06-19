@@ -1,4 +1,4 @@
-CREATE TABLE contrib_to_cand_from_cmte
+CREATE TABLE contrib_by_indiv
 (
    cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
@@ -16,7 +16,6 @@ CREATE TABLE contrib_to_cand_from_cmte
    transaction_dt date,
    transaction_amt decimal(14,2)
    other_id varchar(9),
-   cand_id varchar(9),
    tran_id varchar(32),
    file_num bigint,
    memo_cd varchar(1),
@@ -24,4 +23,3 @@ CREATE TABLE contrib_to_cand_from_cmte
    sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
-
