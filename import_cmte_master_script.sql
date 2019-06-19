@@ -1,10 +1,10 @@
 -- Table: public.cmte_master
 
--- DROP TABLE public.cmte_master;
+DROP TABLE IF EXISTS public.cmte_master; 
 
 CREATE TABLE public.cmte_master
 (
-  cmte_id varchar(9) NOT NULL DEFAULT,
+  cmte_id varchar(9) NOT NULL,
   cmte_name varchar(200),
   tres_name varchar(90),
   cmte_street varchar(34),
@@ -18,14 +18,6 @@ CREATE TABLE public.cmte_master
   cmte_filing_freq varchar(1),
   org_interest_group varchar(1),
   connected_org_name varchar(200),
-  candidate_id varchar(9)
-  
+  candidate_id varchar(9),
   CONSTRAINT cmte_master_pkey PRIMARY KEY (cmte_id)
-)
-WITH (
-  OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE public.cmte_master
-OWNER to postgres;
+);
