@@ -16,3 +16,4 @@ Naming Conventions:
 1. mast = master
 2. cand = candidate 
 3. cmte = committee
+4. contrib = contribution
