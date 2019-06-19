@@ -10,6 +10,6 @@
  5. Upload the code to GitHub 
 
 Naming Conventions:
-1. ma = master
-2. can = candidate 
-3. com = committee
+1. mast = master
+2. cand = candidate 
+3. comm = committee
