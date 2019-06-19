@@ -81,3 +81,13 @@ psql -U postgres Presidential_Election < import_candidate_master.sql
 
 3.  If it runs, congratulations 🎉 if not, interpret the error message,
     fix the script, and go back to Step 2.
+
+# Remove duplicates
+
+Show the lines three above and below the offending line with line
+numbers. Note the line number. Then delete the duplicate line.
+
+``` bash
+grep -n --context=3 "H8GA04117" cn.txt 
+sed -i '1840d' cn.txt
+```
