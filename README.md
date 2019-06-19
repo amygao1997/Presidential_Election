@@ -8,3 +8,8 @@
  3. edit the code to create a new data 
  4. copy and paste the code back into pgAdmin and create the table in pgAdmin 
  5. Upload the code to GitHub 
+
+Naming Conventions:
+1. ma = master
+2. can = candidate 
+3. com = committee
