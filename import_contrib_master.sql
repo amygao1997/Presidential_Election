@@ -25,7 +25,18 @@ CREATE TABLE contrib_from_cmtes
     MEMO_CD VARCHAR(1),
     MEMO_TEXT VARCHAR(100),
     SUB_ID VARCHAR(19) NOT NULL,
+    
     CONSTRAINT contrib_from_cmtes_pkey PRIMARY KEY (CMTE_ID)
-    --CONSTRAINT contributions_from_cmtes_fkey_cand FOREIGN KEY (CAND_ID)
-    --REFERENCES candidate_master_info
+    
+    --CONSTRAINT contrib_from_cmtes_fkey_cand FOREIGN KEY (CAND_ID)
+    --REFERENCES candidate_master_info (CAND_ID) MATCH SIMPLE
+    --ON UPDATE NO ACTION
+    --ON DELETE NO ACTION,
+    
+    --CONSTRAINT contrib_from_cmtes_fkey_cmte FOREIGN KEY (CMTE_ID)
+    --REFERENCES public.cmte_master (cmte_id) MATCH SIMPLE
+    --ON UPDATE NO ACTION
+    --ON DELETE NO ACTION,
+    
+    
    )
