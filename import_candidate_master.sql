@@ -21,10 +21,4 @@ CREATE TABLE candidate_master_info
   CAND_ZIP VARCHAR2(9),
   CONSTRAINT candidate_master_info_pkey PRIMARY KEY (CAND_ID),
 )
-WITH (
-  OIDS = FALSE
-)
-TABLESPACE pg_default;
-
-ALTER TABLE candidate_master_info
-OWNER to postgres;
+;
