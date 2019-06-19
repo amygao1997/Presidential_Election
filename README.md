@@ -14,4 +14,4 @@
 Naming Conventions:
 1. mast = master
 2. cand = candidate 
-3. comm = committee
+3. cmte = committee
