@@ -29,17 +29,17 @@ CREATE TABLE contrib_from_cmtes
     
     CONSTRAINT contrib_from_cmtes_pkey PRIMARY KEY (cmte_id),
     
-    CONSTRAINT contrib_from_cmtes_fkey_cand FOREIGN KEY (cand_id)
-    REFERENCES candidate_master_info (cand_id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION,
+    --CONSTRAINT contrib_from_cmtes_fkey_cand FOREIGN KEY (cand_id)
+    --REFERENCES candidate_master_info (cand_id) MATCH SIMPLE
+    --ON UPDATE NO ACTION
+    --ON DELETE NO ACTION,
     
-    CONSTRAINT contrib_from_cmtes_fkey_cmte FOREIGN KEY (cmte_id)
-    REFERENCES public.cmte_master (cmte_id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
+    --CONSTRAINT contrib_from_cmtes_fkey_cmte FOREIGN KEY (cmte_id)
+    --REFERENCES public.cmte_master (cmte_id) MATCH SIMPLE
+    --ON UPDATE NO ACTION
+    --ON DELETE NO ACTION
    );
    
-   --COPY itpas2 FROM '/Users/mm10204/Desktop/Git/Presidential_Election/data'
+   COPY itpas2.txt FROM '/Users/mm10204/Desktop/Git/Presidential_Election/data'
    
 
