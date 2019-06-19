@@ -1,11 +1,11 @@
 CREATE TABLE cand_to_cmte_linkage
 (
-    cand_id VARCHAR(9) --REFERENCES candidate_master_info(cand_id),
+    cand_id VARCHAR(9), --REFERENCES candidate_master_info(cand_id),
     cand_election_yr smallint,
     fec_election_yr smallint,
-    cmte_id VARCHAR(9) --REFERENCES cmte_master(cmte_id),
+    cmte_id VARCHAR(9), --REFERENCES cmte_master(cmte_id),
     cmte_tp VARCHAR(1),
-    cmte_dsgn VARCHAR(1),
+    cmte_dsgn VARCHAR(1)
     --linkage_id INT PRIMARY KEY
     
 );
@@ -13,7 +13,7 @@ CREATE TABLE cand_to_cmte_linkage
 
 CREATE TABLE contrib_to_cand_from_cmte
 (
-   cmte_id varchar(9) --REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9), --REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
    rpt_tp varchar(3),
    transaction_pgi varchar(5),
@@ -27,7 +27,7 @@ CREATE TABLE contrib_to_cand_from_cmte
    employer varchar(38),
    occupation varchar(38),
    transaction_dt date,
-   transaction_amt decimal(14,2)
+   transaction_amt decimal(14,2),
    other_id varchar(9),
    cand_id VARCHAR(9),
    tran_id varchar(32),
@@ -41,7 +41,7 @@ CREATE TABLE contrib_to_cand_from_cmte
 
 CREATE TABLE contrib_by_indiv
 (
-   cmte_id varchar(9) --REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9), --REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
    rpt_tp varchar(3),
    transaction_pgi varchar(5),
@@ -55,7 +55,7 @@ CREATE TABLE contrib_by_indiv
    employer varchar(38),
    occupation varchar(38),
    transaction_dt date,
-   transaction_amt decimal(14,2)
+   transaction_amt decimal(14,2),
    other_id varchar(9),
    tran_id varchar(32),
    file_num bigint,
@@ -67,7 +67,7 @@ CREATE TABLE contrib_by_indiv
 
 CREATE TABLE operating_expends
 (
-   cmte_id varchar(9) --REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9), --REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
    rpt_yr smallint,
    rpt_tp varchar(3),
@@ -88,7 +88,7 @@ CREATE TABLE operating_expends
    memo_cd varchar(1),
    memo_text varchar(100),
    entity_tp varchar(3),
-   sub_id bigint --REFERENCES contrib_from_cmtes(sub_id),
+   sub_id bigint, --REFERENCES contrib_from_cmtes(sub_id),
    file_num bigint,
    tran_id varchar(32),
    back_ref_tran_id varchar(32)
