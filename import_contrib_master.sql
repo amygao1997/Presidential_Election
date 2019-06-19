@@ -27,7 +27,7 @@ CREATE TABLE contrib_from_cmtes
     MEMO_TEXT VARCHAR(100),
     SUB_ID VARCHAR(19) NOT NULL,
     
-    CONSTRAINT contrib_from_cmtes_pkey PRIMARY KEY (CMTE_ID)
+    CONSTRAINT contrib_from_cmtes_pkey PRIMARY KEY (CMTE_ID),
     
     CONSTRAINT contrib_from_cmtes_fkey_cand FOREIGN KEY (CAND_ID)
     REFERENCES candidate_master_info (CAND_ID) MATCH SIMPLE
