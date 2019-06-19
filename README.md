@@ -17,9 +17,8 @@ Naming Conventions:
 1. mast = master
 2. cand = candidate 
 3. cmte = committee
-<<<<<<< HEAD
 
-#How to add the `psql` binary to path
+# How to add the `psql` binary to path
 1. To find where the psql binary, use this code chunk to search within your application library (where the psql binary is):
 ```{bash, eval=FALSE}
 find /Library  -name "psql"
@@ -41,7 +40,3 @@ export PATH=/Library/PostgreSQL/11/bin:$PATH
 
 4. Type in `psql -U postgres` into the command line. This logs you into psql as the user "postgres". When asked for the password, enter the super user password you created when installing postgres. Not your computer's password. 
 
-
-=======
-4. contrib = contribution
->>>>>>> e79eafe1e78461f410e30f58ac8f7ae3f09556b8
