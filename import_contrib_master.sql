@@ -37,7 +37,7 @@ CREATE TABLE contrib_from_cmtes
     CONSTRAINT contrib_from_cmtes_fkey_cmte FOREIGN KEY (CMTE_ID)
     REFERENCES public.cmte_master (cmte_id) MATCH SIMPLE
     ON UPDATE NO ACTION
-    ON DELETE NO ACTION,
+    ON DELETE NO ACTION
    );
    
    --COPY itpas2 FROM '/Users/mm10204/Desktop/Git/Presidential_Election/data'
