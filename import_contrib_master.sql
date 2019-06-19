@@ -1,8 +1,9 @@
+DROP TABLE contrib_from_cmtes;
+
 CREATE TABLE contrib_from_cmtes
 --Contributions to candidates from committees info
 
 (
-
     CMTE_ID VARCHAR(9) NOT NULL,
     AMNDT_IND VARCHAR(1),
     RPT_TP VARCHAR(3),
@@ -28,15 +29,17 @@ CREATE TABLE contrib_from_cmtes
     
     CONSTRAINT contrib_from_cmtes_pkey PRIMARY KEY (CMTE_ID)
     
-    --CONSTRAINT contrib_from_cmtes_fkey_cand FOREIGN KEY (CAND_ID)
-    --REFERENCES candidate_master_info (CAND_ID) MATCH SIMPLE
-    --ON UPDATE NO ACTION
-    --ON DELETE NO ACTION,
+    CONSTRAINT contrib_from_cmtes_fkey_cand FOREIGN KEY (CAND_ID)
+    REFERENCES candidate_master_info (CAND_ID) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION,
     
-    --CONSTRAINT contrib_from_cmtes_fkey_cmte FOREIGN KEY (CMTE_ID)
-    --REFERENCES public.cmte_master (cmte_id) MATCH SIMPLE
-    --ON UPDATE NO ACTION
-    --ON DELETE NO ACTION,
-    
-    
-   )
+    CONSTRAINT contrib_from_cmtes_fkey_cmte FOREIGN KEY (CMTE_ID)
+    REFERENCES public.cmte_master (cmte_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION,
+   );
+   
+   --COPY itpas2 FROM '/Users/mm10204/Desktop/Git/Presidential_Election/data'
+   
+
