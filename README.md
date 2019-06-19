@@ -24,7 +24,7 @@ Naming Conventions:
 find /Library  -name "psql"
 ```
 
-2. Copy the path that identfies the binary. To permanently be able to access psql via terminal, you need to edit your .bash_profile file. To do this do:
+2. Copy the path that identfies where binary is. To permanently be able to access psql via terminal, you need to edit your .bash_profile file. To do this do:
 
 `nano ~/.bash_profile`
 
@@ -40,3 +40,25 @@ export PATH=/Library/PostgreSQL/11/bin:$PATH
 
 4. Type in `psql -U postgres` into the command line. This logs you into psql as the user "postgres". When asked for the password, enter the super user password you created when installing postgres. Not your computer's password. 
 
+# How to create the database in PgAdmin
+
+1. Right click "localhost" in the right side panel.
+2. Click Create > Database...
+3. In the window, give the database a name and click save.
+
+# How to create the table with your SQL script via psql
+
+1. Navigate to where your SQL script lives.
+
+2. Next log in as user postgres and point your database to the path of the script.
+
+```{bash, eval=FALSE}
+psql -U postgres [Insert your database name] < [Insert your SQL script name here]
+```
+
+For example, 
+```{bash, eval=FALSE}
+psql -U postgres Presidential_Election < import_candidate_master.sql
+```
+
+3. If it runs, congratulations 🎉 if not, interpret the error message, fix the script, and go back to Step 2. 
