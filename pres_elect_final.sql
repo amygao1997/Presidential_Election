@@ -97,7 +97,7 @@ CREATE TABLE contrib_from_cmtes
     file_num NUMERIC(22),
     memo_cd VARCHAR(1),
     memo_text VARCHAR(100),
-    sub_id VARCHAR(19) NOT NULL,
+    sub_id bigint,
     
     CONSTRAINT contrib_from_cmtes_pkey PRIMARY KEY (sub_id)
     
@@ -132,15 +132,14 @@ CREATE TABLE contrib_to_cand_from_cmte
    zip_code varchar(9),
    employer varchar(38),
    occupation varchar(38),
-   transaction_dt date,
+   transaction_dt varchar(8),
    transaction_amt decimal(14,2),
    other_id varchar(9),
-   cand_id VARCHAR(9),
    tran_id varchar(32),
-   file_num bigint,
+   file_num varchar(20),
    memo_cd varchar(1),
    memo_text varchar(100),
-   sub_id bigint PRIMARY KEY
+   sub_id varchar(100)
     
 );
 \COPY contrib_to_cand_from_cmte FROM '/tmp/data/itoth.txt' WITH (DELIMITER '|', HEADER FALSE);
@@ -161,14 +160,14 @@ CREATE TABLE contrib_by_indiv
    zip_code varchar(9),
    employer varchar(38),
    occupation varchar(38),
-   transaction_dt date,
-   transaction_amt decimal(14,2),
+   transaction_dt varchar(8),
+   transaction_amt decimal(14,2) default 0.00,
    other_id varchar(9),
    tran_id varchar(32),
    file_num bigint,
    memo_cd varchar(1),
    memo_text varchar(100),
-   sub_id bigint REFERENCES PRIMARY KEY
+   sub_id bigint
     
 );
 \COPY contrib_by_indiv FROM '/tmp/data/itcont.txt' WITH (DELIMITER '|', HEADER FALSE);
@@ -188,7 +187,7 @@ CREATE TABLE operating_expends
    city varchar(30),
    state varchar(2),
    zip_code varchar(9),
-   transaction_dt date,
+   transaction_dt varchar(10),
    transaction_amt decimal(14,2),
    transaction_pgi varchar(5),
    purpose varchar(100),
@@ -197,10 +196,10 @@ CREATE TABLE operating_expends
    memo_cd varchar(1),
    memo_text varchar(100),
    entity_tp varchar(3),
-   sub_id bigint PRIMARY KEY,
+   sub_id bigint,
    file_num bigint,
    tran_id varchar(32),
-   back_ref_tran_id varchar(32)
-    
+   back_ref_tran_id varchar(32),
+   garbage varchar(10) 
 );
 \COPY operating_expends FROM '/tmp/data/oppexp.txt' WITH (DELIMITER '|', HEADER FALSE);
