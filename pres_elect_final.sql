@@ -12,7 +12,7 @@ CREATE TABLE cand_to_cmte_linkage
     
 );
 
-
+    
 DROP TABLE IF EXISTS contrib_to_cand_from_cmte;
 CREATE TABLE contrib_to_cand_from_cmte
 (
