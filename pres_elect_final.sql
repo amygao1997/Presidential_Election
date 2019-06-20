@@ -51,7 +51,7 @@ CREATE TABLE candidate_master_info
   --CONSTRAINT candidate_master_info_pkey PRIMARY KEY (CAND_ID)
 );
 
-\COPY candidate_master_info FROM '/tmp/data/cn.txt' 
+\COPY candidate_master_info FROM '/tmp/data/cn.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 ;
 
@@ -69,7 +69,7 @@ CREATE TABLE cand_to_cmte_linkage
     linkage_id INT PRIMARY KEY
     
 );
-
+\COPY cand_to_cmte_linkage FROM '/tmp/data/ccl.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 --Olivia
 DROP TABLE IF EXISTS contrib_from_cmtes;
@@ -114,7 +114,7 @@ CREATE TABLE contrib_from_cmtes
     --ON DELETE NO ACTION
    );
 
-
+\COPY contrib_from_cmtes FROM '/tmp/data/itoth.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 
 
@@ -146,7 +146,7 @@ CREATE TABLE contrib_to_cand_from_cmte
    sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
-
+\COPY cmte_master FROM '/tmp/data/itpas2.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 DROP TABLE IF EXISTS contrib_by_indiv;
 CREATE TABLE contrib_by_indiv
@@ -174,7 +174,7 @@ CREATE TABLE contrib_by_indiv
    sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
-
+\COPY cmte_master FROM '/tmp/data/itcont.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 DROP TABLE IF EXISTS operating_expends;
 CREATE TABLE operating_expends
@@ -206,3 +206,4 @@ CREATE TABLE operating_expends
    back_ref_tran_id varchar(32)
     
 );
+\COPY cmte_master FROM '/tmp/data/oppexp.txt' WITH (DELIMITER '|', HEADER FALSE);
