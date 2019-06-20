@@ -18,12 +18,10 @@ CREATE TABLE candidate_master_info
   CAND_ST2 VARCHAR(34), 
   CAND_CITY VARCHAR(30), 
   CAND_ST VARCHAR(2), 
-  CAND_ZIP VARCHAR(9)
-  --CONSTRAINT candidate_master_info_pkey PRIMARY KEY (CAND_ID)
+  CAND_ZIP VARCHAR(9),
+  CONSTRAINT candidate_master_info_pkey PRIMARY KEY (CAND_ID)
 );
 
-\COPY candidate_master_info FROM '/tmp/data/cn.txt' 
-
-;
+\COPY candidate_master_info FROM '/tmp/data/cn.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 
