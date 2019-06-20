@@ -13,5 +13,8 @@ find data -type f -name "*.zip" -exec unzip -d data {} \;
 # find and remove duplicates
 grep -n --context=3 "H8GA04117" data/cn.txt 
 grep -n --context=3 "H8GA04117" data/cm.txt 
+grep -n --context=3 "C00690123" data/cm.txt 
 sed -i -e '1844d' data/cn.txt
 sed -i -e '7700d' data/cm.txt
+sed -i -e '10251d' data/cm.txt
+
