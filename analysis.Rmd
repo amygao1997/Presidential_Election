@@ -1,0 +1,57 @@
+---
+title: "FEC 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(RPostgreSQL)
+```
+
+# Database connection
+
+First, create a connection to the PostgreSQL server. Then set the `connection` object in `knit` so that all `sql` chunks will be able to use it. 
+
+```{r}
+db <- src_postgres(
+  dbname = "pres_elect", 
+  host = "localhost",
+  user = "postgres", 
+  password = "postgres")
+knitr::opts_chunk$set(
+  connection = db$con, 
+  max.print = 25
+)
+```
+
+# Option 1: Use `sql` chunks
+
+Set the [`output.var` chunk option](https://bookdown.org/yihui/rmarkdown/language-engines.html#sql) to the name of the data frame you want that chunk to return. (See the Markdown source file.)
+
+```{sql, output.var="warrens"}
+SELECT * FROM candidate_master_info 
+WHERE cand_name LIKE '%WARREN%'
+LIMIT 1000;
+```
+
+Now, the data is available in our R session!
+
+```{r}
+as_tibble(warrens)
+```
+
+This method is nice and elegant, but harder to work with in your R session. 
+
+# Option 2: Use `DBI`
+
+```{r}
+warrens_df <- DBI::dbGetQuery(db$con, "
+  SELECT * FROM candidate_master_info 
+WHERE cand_name LIKE '%WARREN%'
+LIMIT 1000;
+")
+as_tibble(warrens_df)
+```
+
+This method works well, but you lose all syntax highlighting for the SQL queries so it looks ugly. 
