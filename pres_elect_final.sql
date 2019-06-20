@@ -1,22 +1,22 @@
 
-DROP TABLE IF EXISTS pres_elect.cand_to_cmte_linkage;
+DROP TABLE IF EXISTS cand_to_cmte_linkage;
 CREATE TABLE cand_to_cmte_linkage
 (
-    cand_id VARCHAR(9), --REFERENCES candidate_master_info(cand_id),
-    cand_election_yr smallint,
-    fec_election_yr smallint,
-    cmte_id VARCHAR(9), --REFERENCES cmte_master(cmte_id),
+    cand_id VARCHAR(9) REFERENCES candidate_master_info(cand_id),
+    cand_election_yr smallint NOT NULL,
+    fec_election_yr smallint NOT NULL,
+    cmte_id VARCHAR(9) REFERENCES cmte_master(cmte_id),
     cmte_tp VARCHAR(1),
     cmte_dsgn VARCHAR(1)
-    --linkage_id INT PRIMARY KEY
+    linkage_id INT PRIMARY KEY
     
 );
 
-
-DROP TABLE IF EXISTS pres_elect.contrib_to_cand_from_cmte;
+    
+DROP TABLE IF EXISTS contrib_to_cand_from_cmte;
 CREATE TABLE contrib_to_cand_from_cmte
 (
-   cmte_id varchar(9), --REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
    rpt_tp varchar(3),
    transaction_pgi varchar(5),
@@ -37,15 +37,15 @@ CREATE TABLE contrib_to_cand_from_cmte
    file_num bigint,
    memo_cd varchar(1),
    memo_text varchar(100),
-   sub_id bigint --REFERENCES contrib_from_cmtes(sub_id)
+   sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
 
 
-DROP TABLE IF EXISTS pres_elect.contrib_by_indiv;
+DROP TABLE IF EXISTS contrib_by_indiv;
 CREATE TABLE contrib_by_indiv
 (
-   cmte_id varchar(9), --REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
    rpt_tp varchar(3),
    transaction_pgi varchar(5),
@@ -65,15 +65,15 @@ CREATE TABLE contrib_by_indiv
    file_num bigint,
    memo_cd varchar(1),
    memo_text varchar(100),
-   sub_id bigint --REFERENCES contrib_from_cmtes(sub_id)
+   sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
 
 
-DROP TABLE IF EXISTS pres_elect.operating_expends;
+DROP TABLE IF EXISTS operating_expends;
 CREATE TABLE operating_expends
 (
-   cmte_id varchar(9), --REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
    rpt_yr smallint,
    rpt_tp varchar(3),
@@ -94,7 +94,7 @@ CREATE TABLE operating_expends
    memo_cd varchar(1),
    memo_text varchar(100),
    entity_tp varchar(3),
-   sub_id bigint, --REFERENCES contrib_from_cmtes(sub_id),
+   sub_id bigint REFERENCES contrib_from_cmtes(sub_id),
    file_num bigint,
    tran_id varchar(32),
    back_ref_tran_id varchar(32)
