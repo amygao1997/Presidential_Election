@@ -17,7 +17,7 @@ CREATE TABLE contrib_from_cmtes
     zip_code VARCHAR(9),
     employer VARCHAR(38),
     occupation VARCHAR(38),
-    transaction_dt NUMERIC(8),
+    transaction_dt VARCHAR(8),
     transaction_amt NUMERIC(14,2),
     other_id VARCHAR(9),
     cand_id VARCHAR(9),
