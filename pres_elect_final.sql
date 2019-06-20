@@ -1,5 +1,5 @@
 
-DROP TABLE IF EXISTS pres_elect.cand_to_cmte_linkage;
+DROP TABLE IF EXISTS cand_to_cmte_linkage;
 CREATE TABLE cand_to_cmte_linkage
 (
     cand_id VARCHAR(9) REFERENCES candidate_master_info(cand_id),
@@ -13,7 +13,7 @@ CREATE TABLE cand_to_cmte_linkage
 );
 
 
-DROP TABLE IF EXISTS pres_elect.contrib_to_cand_from_cmte;
+DROP TABLE IF EXISTS contrib_to_cand_from_cmte;
 CREATE TABLE contrib_to_cand_from_cmte
 (
    cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
@@ -42,7 +42,7 @@ CREATE TABLE contrib_to_cand_from_cmte
 );
 
 
-DROP TABLE IF EXISTS pres_elect.contrib_by_indiv;
+DROP TABLE IF EXISTS contrib_by_indiv;
 CREATE TABLE contrib_by_indiv
 (
    cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
@@ -70,7 +70,7 @@ CREATE TABLE contrib_by_indiv
 );
 
 
-DROP TABLE IF EXISTS pres_elect.operating_expends;
+DROP TABLE IF EXISTS operating_expends;
 CREATE TABLE operating_expends
 (
    cmte_id varchar(9) REFERENCES cmte_master(cmte_id),

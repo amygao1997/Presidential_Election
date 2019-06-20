@@ -112,21 +112,23 @@ For example,
 
 # Running the script
 
-1. Log into psql as user postgres via terminal.
+1. Go to the directory where SQL script lives. 
+
+2. Log into psql as user postgres via terminal.
 
 ```{bash, eval=FALSE}
 psql -U postgres 
 ```
 
-2. Connect to the database you created with `\c Presidential_Election`.
+3. Connect to the database you created with `\c Presidential_Election`.
 
 For example, 
 `\c [database name]`
 
-3. Then import your SQL script using:
+4. Then import your SQL script using:
 `\i import_candidate_master.sql`
 
-4. If the terminal does not say `CREATE TABLE`, interpret the error and try again. 
+5. If the terminal does not say `CREATE TABLE`, interpret the error and try again. 
 
 # Remove duplicates
 
