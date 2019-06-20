@@ -65,7 +65,7 @@ CREATE TABLE cand_to_cmte_linkage
     fec_election_yr smallint NOT NULL,
     cmte_id VARCHAR(9) REFERENCES cmte_master(cmte_id),
     cmte_tp VARCHAR(1),
-    cmte_dsgn VARCHAR(1)
+    cmte_dsgn VARCHAR(1),
     linkage_id INT PRIMARY KEY
     
 );
