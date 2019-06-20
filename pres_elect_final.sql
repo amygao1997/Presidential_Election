@@ -1,6 +1,6 @@
 --Edwood
 
-DROP TABLE IF EXISTS public.cmte_master; 
+DROP TABLE IF EXISTS public.cmte_master CASCADE; 
 
 CREATE TABLE public.cmte_master
 (
@@ -29,7 +29,7 @@ CREATE TABLE public.cmte_master
 
 
 --Amy
-DROP TABLE IF EXISTS candidate_master_info;
+DROP TABLE IF EXISTS candidate_master_info CASCADE;
 
 CREATE TABLE candidate_master_info
 (
