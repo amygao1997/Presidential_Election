@@ -1,4 +1,4 @@
-DROP TABLE contrib_from_cmtes;
+DROP TABLE IF EXISTS contrib_from_cmtes;
 
 CREATE TABLE contrib_from_cmtes
 --Contributions to candidates from committees info
