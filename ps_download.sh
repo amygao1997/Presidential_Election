@@ -19,6 +19,6 @@ sed -i -e '7700d' data/cm.txt
 sed -i -e '10251d' data/cm.txt
 
 #fixing the \ that break out of the pipe
-sed -i -e 's/ADVISORS\\|/ADVISORS|/g' itcont.txt
-sed -i -e 's/PAYROLL\\|/PAYROLL|/g' oppexp.txt
+sed -i -e 's/ADVISORS\\|/ADVISORS|/g' data/itcont.txt
+sed -i -e 's/PAYROLL\\|/PAYROLL|/g' data/oppexp.txt
 
