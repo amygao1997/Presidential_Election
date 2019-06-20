@@ -8,7 +8,7 @@ wget -N --no-check-certificate https://cg-519a459a-0ea3-42c2-b7bc-fa1143481f74.s
 wget -N --no-check-certificate https://cg-519a459a-0ea3-42c2-b7bc-fa1143481f74.s3-us-gov-west-1.amazonaws.com/bulk-downloads/2020/cm20.zip -P data
 
 # unzip files and put them in the data directory
-find data -type f -name "*.zip" -exec unzip -d data {} \;
+find data -type f -name "*.zip" -exec unzip -o -d data {} \;
 
 # find and remove duplicates
 grep -n --context=3 "H8GA04117" data/cn.txt 
