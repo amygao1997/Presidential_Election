@@ -3,8 +3,8 @@ DROP TABLE IF EXISTS pres_elect.cand_to_cmte_linkage;
 CREATE TABLE cand_to_cmte_linkage
 (
     cand_id VARCHAR(9), --REFERENCES candidate_master_info(cand_id),
-    cand_election_yr smallint,
-    fec_election_yr smallint,
+    cand_election_yr smallint NOT NULL,
+    fec_election_yr smallint NOT NULL,
     cmte_id VARCHAR(9), --REFERENCES cmte_master(cmte_id),
     cmte_tp VARCHAR(1),
     cmte_dsgn VARCHAR(1)
