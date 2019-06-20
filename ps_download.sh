@@ -6,5 +6,5 @@ wget --no-check-certificate https://cg-519a459a-0ea3-42c2-b7bc-fa1143481f74.s3-u
 wget --no-check-certificate https://cg-519a459a-0ea3-42c2-b7bc-fa1143481f74.s3-us-gov-west-1.amazonaws.com/bulk-downloads/2020/ccl20.zip -P data
 wget --no-check-certificate https://cg-519a459a-0ea3-42c2-b7bc-fa1143481f74.s3-us-gov-west-1.amazonaws.com/bulk-downloads/2020/cm20.zip -P data
 
-unzip *.zip
+unzip data/*.zip
 
