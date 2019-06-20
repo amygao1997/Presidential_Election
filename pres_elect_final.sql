@@ -203,3 +203,4 @@ CREATE TABLE operating_expends
    garbage varchar(10) 
 );
 \COPY operating_expends FROM '/tmp/data/oppexp.txt' WITH (DELIMITER '|', HEADER FALSE);
+ALTER TABLE operating_expends DROP garbage;
