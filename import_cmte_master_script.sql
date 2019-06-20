@@ -21,3 +21,5 @@ CREATE TABLE public.cmte_master
   candidate_id varchar(9),
   CONSTRAINT cmte_master_pkey PRIMARY KEY (cmte_id)
 );
+
+\COPY cmte_master FROM '/tmp/data/cm.txt' WITH (DELIMITER '|', HEADER FALSE);
