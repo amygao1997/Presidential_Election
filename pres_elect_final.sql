@@ -47,13 +47,11 @@ CREATE TABLE candidate_master_info
   CAND_ST2 VARCHAR(34), 
   CAND_CITY VARCHAR(30), 
   CAND_ST VARCHAR(2), 
-  CAND_ZIP VARCHAR(9)
+  CAND_ZIP VARCHAR(9),
   CONSTRAINT candidate_master_info_pkey PRIMARY KEY (CAND_ID)
 );
 
 \COPY candidate_master_info FROM '/tmp/data/cn.txt' WITH (DELIMITER '|', HEADER FALSE);
-
-;
 
 
 
@@ -113,9 +111,8 @@ CREATE TABLE contrib_from_cmtes
     --ON UPDATE NO ACTION
     --ON DELETE NO ACTION
    );
-
-\COPY contrib_from_cmtes FROM '/tmp/data/itoth.txt' WITH (DELIMITER '|', HEADER FALSE);
-
+    
+   \COPY contrib_from_cmtes FROM '/tmp/data/itpas2.txt' DELIMITER '|' NULL '';
 
 
     
@@ -146,7 +143,7 @@ CREATE TABLE contrib_to_cand_from_cmte
    sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
-\COPY contrib_to_cand_from_cmte FROM '/tmp/data/itpas2.txt' WITH (DELIMITER '|', HEADER FALSE);
+\COPY contrib_to_cand_from_cmte FROM '/tmp/data/itoth.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 DROP TABLE IF EXISTS contrib_by_indiv;
 CREATE TABLE contrib_by_indiv
