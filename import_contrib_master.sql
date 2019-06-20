@@ -40,6 +40,6 @@ CREATE TABLE contrib_from_cmtes
     --ON DELETE NO ACTION
    );
    
-   COPY contrib_from_cmtes FROM '/Users/mm10204/Desktop/Git/Presidential_Election/data/itpas2.txt'
+   --COPY contrib_from_cmtes FROM '/Users/mm10204/Desktop/Git/Presidential_Election/data/itpas2.txt'
    
 
