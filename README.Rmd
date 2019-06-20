@@ -53,7 +53,7 @@ export PATH=/Library/PostgreSQL/11/bin:$PATH
 2. Click Create > Database...
 3. In the window, give the database a name and click save.
 
-# How to create the table with your SQL script via psql
+# How to create the table with your SQL script via psql (ignore these steps for now)
 
 1. Navigate to where your SQL script lives.
 
@@ -69,3 +69,70 @@ psql -U postgres Presidential_Election < import_candidate_master.sql
 ```
 
 3. If it runs, congratulations 🎉 if not, interpret the error message, fix the script, and go back to Step 2. 
+
+# Creating a symbolic link
+
+1.Indicate the absolute path to the directory you want to shortcut into and create a symbolic link with following code: 
+
+```{bash, eval=FALSE}
+ln -s /Users/mm17682/Documents/Presidential_Election/data /tmp/data
+```
+
+For example, 
+
+```{bash, eval=FALSE}
+ln -s /[insert target folder name] /[symbolic link path NOTE: also serves as shortcut name]
+```
+
+2. Check to see if the link was made correctly
+```{bash, eval=FALSE}
+ls -l /tmp
+```
+
+3. Now test it!
+```{bash, eval=FALSE}
+cd /tmp/data
+```
+
+Next do `ls`. If you don't see the contents of the directory that shortcutted into using the link, you didn't do it correctly. 
+
+# Importing your data into the database you created in pgAdmin
+
+1. After you've populated the script with the definitions, add the following \COPY command to the end of the script: 
+
+```{bash, eval=FALSE}
+\COPY candidate_master_info FROM '/tmp/data/cn.txt'
+```
+
+For example,
+
+```{bash, eval=FALSE}
+\COPY [insert your table name from PgAdmin] FROM [insert your symbolic path with your file name at the end]
+```
+
+# Running the script
+
+1. Log into psql as user postgres via terminal.
+
+```{bash, eval=FALSE}
+psql -U postgres 
+```
+
+2. Connect to the database you created with `\c Presidential_Election`.
+
+For example, 
+`\c [database name]`
+
+3. Then import your SQL script using:
+`\i import_candidate_master.sql`
+
+4. If the terminal does not say `CREATE TABLE`, interpret the error and try again. 
+
+# Remove duplicates
+
+Show the lines three above and below the offending line with line numbers. Note the line number. Then delete the duplicate line. 
+
+```{bash, eval=FALSE}
+grep -n --context=3 "H8GA04117" cn.txt 
+sed -i '1840d' cn.txt
+```
