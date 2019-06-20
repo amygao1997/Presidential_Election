@@ -53,7 +53,7 @@ export PATH=/Library/PostgreSQL/11/bin:$PATH
 2. Click Create > Database...
 3. In the window, give the database a name and click save.
 
-# How to create the table with your SQL script via psql
+# How to create the table with your SQL script via `psql`
 
 1. Navigate to where your SQL script lives.
 
