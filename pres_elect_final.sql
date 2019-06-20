@@ -146,7 +146,7 @@ CREATE TABLE contrib_to_cand_from_cmte
    sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
-\COPY cmte_master FROM '/tmp/data/itpas2.txt' WITH (DELIMITER '|', HEADER FALSE);
+\COPY contrib_to_cand_from_cmte FROM '/tmp/data/itpas2.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 DROP TABLE IF EXISTS contrib_by_indiv;
 CREATE TABLE contrib_by_indiv
@@ -174,7 +174,7 @@ CREATE TABLE contrib_by_indiv
    sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
     
 );
-\COPY cmte_master FROM '/tmp/data/itcont.txt' WITH (DELIMITER '|', HEADER FALSE);
+\COPY contrib_by_indiv FROM '/tmp/data/itcont.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 DROP TABLE IF EXISTS operating_expends;
 CREATE TABLE operating_expends
@@ -206,4 +206,4 @@ CREATE TABLE operating_expends
    back_ref_tran_id varchar(32)
     
 );
-\COPY cmte_master FROM '/tmp/data/oppexp.txt' WITH (DELIMITER '|', HEADER FALSE);
+\COPY operating_expends FROM '/tmp/data/oppexp.txt' WITH (DELIMITER '|', HEADER FALSE);
