@@ -40,5 +40,5 @@ CREATE TABLE contrib_from_cmtes
     --ON DELETE NO ACTION
    );
     
-   \COPY contrib_from_cmtes FROM '/tmp/data/itpas2.txt'
+   \COPY contrib_from_cmtes FROM '/tmp/data/itpas2.txt';
    
