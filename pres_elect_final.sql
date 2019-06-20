@@ -58,10 +58,10 @@ CREATE TABLE candidate_master_info
 DROP TABLE IF EXISTS cand_to_cmte_linkage;
 CREATE TABLE cand_to_cmte_linkage
 (
-    cand_id VARCHAR(9) REFERENCES candidate_master_info(cand_id),
+    cand_id VARCHAR(9), --REFERENCES candidate_master_info(cand_id),
     cand_election_yr smallint NOT NULL,
     fec_election_yr smallint NOT NULL,
-    cmte_id VARCHAR(9) REFERENCES cmte_master(cmte_id),
+    cmte_id VARCHAR(9), --REFERENCES cmte_master(cmte_id),
     cmte_tp VARCHAR(1),
     cmte_dsgn VARCHAR(1),
     linkage_id INT PRIMARY KEY
