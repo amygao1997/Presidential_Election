@@ -88,7 +88,7 @@ CREATE TABLE contrib_from_cmtes
     state VARCHAR(2),
     zip_code VARCHAR(9),
     employer VARCHAR(38),
-    occupation VARCHAR(38),
+    occupation VARCHAR(38) default '',
     transaction_dt VARCHAR(8),
     transaction_amt NUMERIC(14,2),
     other_id VARCHAR(9),
@@ -112,7 +112,7 @@ CREATE TABLE contrib_from_cmtes
     --ON DELETE NO ACTION
    );
     
-   \COPY contrib_from_cmtes FROM '/tmp/data/itpas2.txt' DELIMITER '|' NULL '';
+   \COPY contrib_from_cmtes FROM '/tmp/data/itpas2.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 
     
@@ -140,7 +140,7 @@ CREATE TABLE contrib_to_cand_from_cmte
    file_num bigint,
    memo_cd varchar(1),
    memo_text varchar(100),
-   sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
+   sub_id bigint PRIMARY KEY
     
 );
 \COPY contrib_to_cand_from_cmte FROM '/tmp/data/itoth.txt' WITH (DELIMITER '|', HEADER FALSE);
@@ -168,7 +168,7 @@ CREATE TABLE contrib_by_indiv
    file_num bigint,
    memo_cd varchar(1),
    memo_text varchar(100),
-   sub_id bigint REFERENCES contrib_from_cmtes(sub_id)
+   sub_id bigint REFERENCES PRIMARY KEY
     
 );
 \COPY contrib_by_indiv FROM '/tmp/data/itcont.txt' WITH (DELIMITER '|', HEADER FALSE);
@@ -197,7 +197,7 @@ CREATE TABLE operating_expends
    memo_cd varchar(1),
    memo_text varchar(100),
    entity_tp varchar(3),
-   sub_id bigint REFERENCES contrib_from_cmtes(sub_id),
+   sub_id bigint PRIMARY KEY,
    file_num bigint,
    tran_id varchar(32),
    back_ref_tran_id varchar(32)
