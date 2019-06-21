@@ -44,6 +44,7 @@ WHERE cand_election_yr ='2020' AND cand_office = 'P' and cand_status = 'C'
 GROUP BY cands.cand_id;
 
 --expenditures
+
 DROP VIEW IF EXISTS expend  CASCADE;
 
 CREATE VIEW expend AS
