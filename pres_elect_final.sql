@@ -216,8 +216,8 @@ AND cand_status = 'C'
 GROUP BY cmtes.cmte_id, cands.cand_id;
 
 -- contributions to candidate committees from other committees
-DROP VIEW IF EXISTS cmtes_total;
-CREATE VIEW cmtes_total AS
+DROP VIEW IF EXISTS pres2020_cmtes;
+CREATE VIEW pres2020_cmtes AS
 SELECT cands.cand_id, cmtes.cmte_id, sum(cc.transaction_amt) as cmtes_total
 FROM contrib_to_candidate_cmtes cc
 LEFT JOIN cands on cands.cand_id = cc.cand_id
