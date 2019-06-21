@@ -51,8 +51,8 @@ How to create the database in PgAdmin
 2.  Click Create &gt; Database...
 3.  In the window, give the database a name and click save.
 
-How to create the table with your SQL script via psql (ignore these steps for now)
-==================================================================================
+How to create the table with your SQL script via `psql` (ignore these steps for now)
+====================================================================================
 
 1.  Navigate to where your SQL script lives.
 
@@ -69,6 +69,13 @@ psql -U postgres Presidential_Election < import_candidate_master.sql
 ```
 
 1.  If it runs, congratulations 🎉 if not, interpret the error message, fix the script, and go back to Step 2.
+
+Don't like logging in? Pipe the script into the database.
+=========================================================
+
+``` bash
+psql -U postgres pres_elect < pres_elect_final.sql 
+```
 
 Creating a symbolic link
 ========================
@@ -117,7 +124,9 @@ For example,
 Running the script
 ==================
 
-1.  Log into psql as user postgres via terminal.
+1.  Go to the directory where SQL script lives.
+
+2.  Log into psql as user postgres via terminal.
 
 ``` bash
 psql -U postgres 
