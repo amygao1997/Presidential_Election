@@ -17,7 +17,7 @@ GROUP BY cmtes.cmte_id, cands.cand_id;
 
 -- transactions total 
 
-DROP VIEW IF EXISTS res2020_trans;
+DROP VIEW IF EXISTS pres2020_trans;
 
 CREATE VIEW pres2020_trans AS 
 SELECT tl.cand_id, tl.cmte_id, SUM(transaction_amt) AS transaction_total
@@ -32,3 +32,25 @@ WHERE t.cmte_id IN (SELECT cmte_id
 					   								WHERE cand_election_yr='2020' AND cand_office= 'P' AND cand_status ='C'
 									)))
 GROUP BY tl.cand_id, tl.cmte_id ;
+
+-- contributions to candidate committees from other committees
+DROP VIEW IF EXISTS pres2020_cmtes;
+CREATE VIEW pres2020_cmtes AS
+SELECT cands.cand_id, cmtes.cmte_id, sum(cc.transaction_amt) as cmtes_total
+FROM contrib_to_candidate_cmtes cc
+LEFT JOIN cands on cands.cand_id = cc.cand_id
+LEFT JOIN cmtes on cmtes.cmte_id = cc.cmte_id
+WHERE cand_election_yr ='2020' AND cand_office = 'P' and cand_status = 'C'
+GROUP BY cands.cand_id, cmtes.cmte_id;
+
+--expenditures
+DROP VIEW IF EXISTS expend;
+
+CREATE VIEW expend AS
+SELECT operating_expends.cmte_id, sum(transaction_amt), candidate_id
+FROM operating_expends 
+JOIN cmtes ON operating_expends.cmte_id = cmtes.cmte_id
+JOIN cands ON candidate_id = cands.cand_id
+WHERE entity_tp = 'CCM' AND cand_election_yr = '2020' AND cand_office = 'P' AND cand_status = 'C'
+GROUP BY operating_expends.cmte_id, candidate_id;
+
