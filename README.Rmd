@@ -68,7 +68,12 @@ For example,
 psql -U postgres Presidential_Election < import_candidate_master.sql
 ```
 
-3. If it runs, congratulations 🎉 if not, interpret the error message, fix the script, and go back to Step 2. 
+3. If it runs, congratulations 🎉 if not, interpret the error message, fix the script, and go back to Step 2.
+
+# Don't like logging in? Pipe the script into the database. 
+```{bash, eval=FALSE}
+psql -U postgres pres_elect < pres_elect_final.sql 
+```
 
 # Creating a symbolic link
 

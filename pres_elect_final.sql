@@ -72,7 +72,7 @@ CREATE TABLE cand_to_cmte_linkage
 --Olivia
 DROP TABLE IF EXISTS contrib_from_cmtes;
 
-CREATE TABLE contrib_from_cmtes
+CREATE TABLE contrib_to_candidate_cmtes
 --Contributions to candidates from committees info
 
 (
@@ -99,7 +99,7 @@ CREATE TABLE contrib_from_cmtes
     memo_text VARCHAR(100),
     sub_id bigint,
     
-    CONSTRAINT contrib_from_cmtes_pkey PRIMARY KEY (sub_id)
+    CONSTRAINT contrib_to_candidate_cmtes_pkey PRIMARY KEY (sub_id)
     
     --CONSTRAINT contrib_from_cmtes_fkey_cand FOREIGN KEY (cand_id)
     --REFERENCES candidate_master_info (cand_id) MATCH SIMPLE
@@ -112,12 +112,12 @@ CREATE TABLE contrib_from_cmtes
     --ON DELETE NO ACTION
    );
     
-   \COPY contrib_from_cmtes FROM '/tmp/data/itpas2.txt' WITH (DELIMITER '|', HEADER FALSE);
+   \COPY contrib_to_candidate_cmtes FROM '/tmp/data/itpas2.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 
     
 DROP TABLE IF EXISTS contrib_to_cand_from_cmte;
-CREATE TABLE contrib_to_cand_from_cmte
+CREATE TABLE transactions
 (
    cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
    amndt_ind varchar(1),
@@ -142,7 +142,7 @@ CREATE TABLE contrib_to_cand_from_cmte
    sub_id varchar(100)
     
 );
-\COPY contrib_to_cand_from_cmte FROM '/tmp/data/itoth.txt' WITH (DELIMITER '|', HEADER FALSE);
+\COPY transactions FROM '/tmp/data/itoth.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 DROP TABLE IF EXISTS contrib_by_indiv;
 CREATE TABLE contrib_by_indiv
