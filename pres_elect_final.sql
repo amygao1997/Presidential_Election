@@ -2,7 +2,7 @@
 
 DROP TABLE IF EXISTS public.cmte_master CASCADE; 
 
-CREATE TABLE public.cmte_master
+CREATE TABLE public.cmtes
 (
   cmte_id varchar(9) NOT NULL,
   cmte_name varchar(200),
@@ -22,16 +22,14 @@ CREATE TABLE public.cmte_master
   CONSTRAINT cmte_master_pkey PRIMARY KEY (cmte_id)
 );
 
-\COPY cmte_master FROM '/tmp/data/cm.txt' WITH (DELIMITER '|', HEADER FALSE);
-
-
+\COPY cmtes FROM '/tmp/data/cm.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 
 
 --Amy
 DROP TABLE IF EXISTS candidate_master_info CASCADE;
 
-CREATE TABLE candidate_master_info
+CREATE TABLE cands
 (
   CAND_ID VARCHAR(9) NOT NULL,
   CAND_NAME VARCHAR(200),
@@ -51,12 +49,12 @@ CREATE TABLE candidate_master_info
   CONSTRAINT candidate_master_info_pkey PRIMARY KEY (CAND_ID)
 );
 
-\COPY candidate_master_info FROM '/tmp/data/cn.txt' WITH (DELIMITER '|', HEADER FALSE);
+\COPY cands FROM '/tmp/data/cn.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 
 
 DROP TABLE IF EXISTS cand_to_cmte_linkage;
-CREATE TABLE cand_to_cmte_linkage
+CREATE TABLE table_link
 (
     cand_id VARCHAR(9), --REFERENCES candidate_master_info(cand_id),
     cand_election_yr smallint NOT NULL,
@@ -67,7 +65,7 @@ CREATE TABLE cand_to_cmte_linkage
     linkage_id INT PRIMARY KEY
     
 );
-\COPY cand_to_cmte_linkage FROM '/tmp/data/ccl.txt' WITH (DELIMITER '|', HEADER FALSE);
+\COPY table_link FROM '/tmp/data/ccl.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 --Olivia
 DROP TABLE IF EXISTS contrib_to_candidate_cmtes;
