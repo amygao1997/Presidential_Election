@@ -44,9 +44,9 @@ WHERE cand_election_yr ='2020' AND cand_office = 'P' and cand_status = 'C'
 GROUP BY cands.cand_id, cmtes.cmte_id;
 
 --expenditures
-DROP VIEW IF EXISTS expend;
+DROP VIEW IF EXISTS pres2020_expend;
 
-CREATE VIEW expend AS
+CREATE VIEW pres2020_expend AS
 SELECT operating_expends.cmte_id, sum(transaction_amt), candidate_id
 FROM operating_expends 
 JOIN cmtes ON operating_expends.cmte_id = cmtes.cmte_id
