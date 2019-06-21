@@ -206,7 +206,7 @@ ALTER TABLE operating_expends DROP garbage;
 CREATE VIEW pres2020_indiv AS
 SELECT cmtes.cmte_id, 
    cands.cand_id,
-   sum(transaction_amt) AS contrib_amount
+   sum(transaction_amt) AS contrib_total
 FROM contrib_by_indiv c
 LEFT JOIN cmtes ON c.cmte_id = cmtes.cmte_id
 LEFT JOIN cands ON cands.cand_id = cmtes.candidate_id
