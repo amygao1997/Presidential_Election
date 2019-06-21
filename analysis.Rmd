@@ -18,7 +18,8 @@ db <- src_postgres(
   dbname = "pres_elect", 
   host = "localhost",
   user = "postgres", 
-  password = "postgres")
+  password = "postgres"
+)
 knitr::opts_chunk$set(
   connection = db$con, 
   max.print = 25
@@ -27,7 +28,7 @@ knitr::opts_chunk$set(
 
 # Option 1: Use `sql` chunks
 
-Set the [`output.var` chunk option](https://bookdown.org/yihui/rmarkdown/language-engines.html#sql) to the name of the data frame you want that chunk to return. (See the Markdown source file.)
+Set the [`output.var` chunk option](https://bookdown.org/yihui/rmarkdown/language-engines.html#sql) to the name of the data frame you want that chunk to return. In this case, that data frame is called `warrens`. (See the Markdown source file.)
 
 ```{sql, output.var="warrens"}
 SELECT * FROM candidate_master_info 
@@ -55,3 +56,11 @@ as_tibble(warrens_df)
 ```
 
 This method works well, but you lose all syntax highlighting for the SQL queries so it looks ugly. 
+
+# Running command line programs from within R
+
+Use the `system2()` command to pass shell commands through and capture the output. 
+
+```{r}
+system2("ls", args = "-lhS", stdout = TRUE)
+```
