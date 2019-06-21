@@ -202,31 +202,4 @@ CREATE TABLE operating_expends
 \COPY operating_expends FROM '/tmp/data/oppexp.txt' WITH (DELIMITER '|', HEADER FALSE);
 ALTER TABLE operating_expends DROP garbage;
 
--- contributions from individuals
-CREATE VIEW pres2020_indiv AS
-SELECT cmtes.cmte_id, 
-   cands.cand_id,
-   sum(transaction_amt) AS contrib_total
-FROM contrib_by_indiv c
-LEFT JOIN cmtes ON c.cmte_id = cmtes.cmte_id
-LEFT JOIN cands ON cands.cand_id = cmtes.candidate_id
-WHERE cands.cand_office = 'P'
-AND cand_election_yr = '2020'
-AND cand_status = 'C'
-<<<<<<< HEAD
-GROUP BY cmtes.cmte_id, cands.cand_id
-ORDER BY amount DESC;
 
-DROP VIEW IF EXISTS expends;
-
---expenditures
-CREATE VIEW expend AS
-SELECT operating_expends.cmte_id, sum(transaction_amt), candidate_id
-FROM operating_expends 
-JOIN cmtes ON operating_expends.cmte_id = cmtes.cmte_id
-JOIN cands ON candidate_id = cands.cand_id
-WHERE entity_tp = 'CCM' AND cand_election_yr = '2020' AND cand_office = 'P' AND cand_status = 'C'
-GROUP BY operating_expends.cmte_id, candidate_id;
-=======
-GROUP BY cmtes.cmte_id, cands.cand_id;
->>>>>>> 23e347523ce7988848a0ababc53777bf80e08411
