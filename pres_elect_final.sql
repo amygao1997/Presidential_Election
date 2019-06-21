@@ -70,8 +70,7 @@ CREATE TABLE cand_to_cmte_linkage
 \COPY cand_to_cmte_linkage FROM '/tmp/data/ccl.txt' WITH (DELIMITER '|', HEADER FALSE);
 
 --Olivia
-DROP TABLE IF EXISTS contrib_from_cmtes;
-
+DROP TABLE IF EXISTS contrib_to_candidate_cmtes;
 CREATE TABLE contrib_to_candidate_cmtes
 --Contributions to candidates from committees info
 
@@ -116,7 +115,7 @@ CREATE TABLE contrib_to_candidate_cmtes
 
 
     
-DROP TABLE IF EXISTS contrib_to_cand_from_cmte;
+DROP TABLE IF EXISTS transactions;
 CREATE TABLE transactions
 (
    cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
