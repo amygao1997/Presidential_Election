@@ -59,8 +59,9 @@ This method works well, but you lose all syntax highlighting for the SQL queries
 
 # Running command line programs from within R
 
-Use the `system2()` command to pass shell commands through and capture the output. 
+Use the `system2()` command to pass shell commands through and capture the output. (`system()` is deprecated.)
 
 ```{r}
-system2("ls", args = "-lhS", stdout = TRUE)
+system("ls -lhS")
+system2("ls", args = "-lhS")
 ```
