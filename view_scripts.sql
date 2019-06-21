@@ -25,10 +25,12 @@ WHERE cand_election_yr ='2020' AND cand_office = 'P' and cand_status = 'C'
 GROUP BY cands.cand_id, cmtes.cmte_id;
 
 --expenditures
+DROP VIEW IF EXISTS expend;
+
 CREATE VIEW expend AS
 SELECT operating_expends.cmte_id, sum(transaction_amt), candidate_id
 FROM operating_expends 
 JOIN cmtes ON operating_expends.cmte_id = cmtes.cmte_id
 JOIN cands ON candidate_id = cands.cand_id
 WHERE entity_tp = 'CCM' AND cand_election_yr = '2020' AND cand_office = 'P' AND cand_status = 'C'
-GROUP BY operating_expends.cmte_id, candidate_id
+GROUP BY operating_expends.cmte_id, candidate_id;
