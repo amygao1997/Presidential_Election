@@ -46,7 +46,7 @@ CREATE TABLE cands
   CAND_CITY VARCHAR(30), 
   CAND_ST VARCHAR(2), 
   CAND_ZIP VARCHAR(9),
-  CONSTRAINT candidate_master_info_pkey PRIMARY KEY (CAND_ID)
+  CONSTRAINT cands_info_pkey PRIMARY KEY (CAND_ID)
 );
 
 \COPY cands FROM '/tmp/data/cn.txt' WITH (DELIMITER '|', HEADER FALSE);
@@ -116,7 +116,7 @@ CREATE TABLE contrib_to_candidate_cmtes
 DROP TABLE IF EXISTS transactions;
 CREATE TABLE transactions
 (
-   cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9) REFERENCES cmtes(cmte_id),
    amndt_ind varchar(1),
    rpt_tp varchar(3),
    transaction_pgi varchar(5),
@@ -144,7 +144,7 @@ CREATE TABLE transactions
 DROP TABLE IF EXISTS contrib_by_indiv;
 CREATE TABLE contrib_by_indiv
 (
-   cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9) REFERENCES cmtes(cmte_id),
    amndt_ind varchar(1),
    rpt_tp varchar(3),
    transaction_pgi varchar(5),
@@ -172,7 +172,7 @@ CREATE TABLE contrib_by_indiv
 DROP TABLE IF EXISTS operating_expends;
 CREATE TABLE operating_expends
 (
-   cmte_id varchar(9) REFERENCES cmte_master(cmte_id),
+   cmte_id varchar(9) REFERENCES cmtes(cmte_id),
    amndt_ind varchar(1),
    rpt_yr smallint,
    rpt_tp varchar(3),
