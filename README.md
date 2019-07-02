@@ -39,7 +39,7 @@ Once you're in, paste your path into the file.
 #psql library path
 export PATH=/Library/PostgreSQL/11/bin:$PATH
 ```
-
+(close terminal and reopen)
 1.  Now `echo` your path to make sure you made the correct changes: `echo $PATH`
 
 2.  Type in `psql -U postgres` into the command line. This logs you into `psql` as the user `postgres`. When asked for the password, enter the super user password you created when installing `postgres`. Not your computer's password.
